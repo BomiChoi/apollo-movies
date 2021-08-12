@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.js": "/apollo-movies/static/js/main.ae744a68.chunk.js",
-    "main.js.map": "/apollo-movies/static/js/main.ae744a68.chunk.js.map",
-    "runtime-main.js": "/apollo-movies/static/js/runtime-main.a9d66eeb.js",
-    "runtime-main.js.map": "/apollo-movies/static/js/runtime-main.a9d66eeb.js.map",
-    "static/js/2.0ec68757.chunk.js": "/apollo-movies/static/js/2.0ec68757.chunk.js",
-    "static/js/2.0ec68757.chunk.js.map": "/apollo-movies/static/js/2.0ec68757.chunk.js.map",
-    "index.html": "/apollo-movies/index.html",
-    "static/js/2.0ec68757.chunk.js.LICENSE.txt": "/apollo-movies/static/js/2.0ec68757.chunk.js.LICENSE.txt"
+    "main.js": "./static/js/main.ae744a68.chunk.js",
+    "main.js.map": "./static/js/main.ae744a68.chunk.js.map",
+    "runtime-main.js": "./static/js/runtime-main.1097f33b.js",
+    "runtime-main.js.map": "./static/js/runtime-main.1097f33b.js.map",
+    "static/js/2.f6bd2b7a.chunk.js": "./static/js/2.f6bd2b7a.chunk.js",
+    "static/js/2.f6bd2b7a.chunk.js.map": "./static/js/2.f6bd2b7a.chunk.js.map",
+    "index.html": "./index.html",
+    "static/js/2.f6bd2b7a.chunk.js.LICENSE.txt": "./static/js/2.f6bd2b7a.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.a9d66eeb.js",
-    "static/js/2.0ec68757.chunk.js",
+    "static/js/runtime-main.1097f33b.js",
+    "static/js/2.f6bd2b7a.chunk.js",
     "static/js/main.ae744a68.chunk.js"
   ]
 }
