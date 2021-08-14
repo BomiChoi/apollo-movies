@@ -13,8 +13,6 @@ const Header = styled.header`
     height: 170px;
     width: 100%;
     padding-top: 50px;
-    position: fixed;
-    z-index: 1;
     box-sizing: border-box;
     background-color: black;
 `;
@@ -39,16 +37,15 @@ const Movies = styled.div`
     width: 100%;
     position: relative;
     padding: 30px;
-    padding-top: 200px;
     box-sizing: border-box;
 `;
-
 
 const GET_MOVIES = gql`
     query {
         movies(rating: 9.0) {
             id
             medium_cover_image
+            isLiked @client
         }
     }
 `;
@@ -64,7 +61,14 @@ export default () => {
             {loading && <Loading>Loading...</Loading>}
             {!loading && data.movies &&
                 <Movies>
-                    {data.movies.map(m => <Movie key={m.id} id={m.id} bg={m.medium_cover_image} />)}
+                    {data.movies.map(m =>
+                        <Movie
+                            key={m.id}
+                            id={m.id}
+                            isLiked={m.isLiked}
+                            bg={m.medium_cover_image}
+                        />
+                    )}
                 </Movies>
             }
         </Container>
