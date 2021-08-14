@@ -26,6 +26,12 @@ const LikeBtn = styled.button`
     cursor: pointer;
 `;
 
+const TOGGLE_LIKE_MOVIE = gql`
+    mutation toggleLikeMovie($id: Int!) {
+        toggleLikeMovie(id:$id) @client
+    }
+`;
+
 const GET_MOVIE = gql`
     query getMovie($id: Int!) {
         movie(id: $id) {
@@ -40,15 +46,11 @@ const GET_MOVIE = gql`
     }
 `;
 
-const TOGGLE_LIKE_MOVIE = gql`
-    mutation toggleLikeMovie($id: Int!) {
-        toggleLikeMovie(id:$id) @client
-    }
-`;
-
 export default ({ id, bg, isLiked }) => {
     const { loading, data } = useQuery(GET_MOVIE, {
-        variables: { id: parseInt(id) }
+        variables: {
+            id: parseInt(id)
+        }
     });
     const [toggleLikeMovie] = useMutation(
         TOGGLE_LIKE_MOVIE,
@@ -56,10 +58,13 @@ export default ({ id, bg, isLiked }) => {
     );
     return (
         <Container>
-            <Link to={`/${id}`}>
-                <Poster bg={bg}></Poster>
-            </Link>
-            <LikeBtn onClick={toggleLikeMovie} >{isLiked ? "❤️" : "🤍"}</LikeBtn>
+            {loading && "Loading..."}
+            {!loading && data.movie && <>
+                <Link to={`/${id}`}>
+                    <Poster bg={bg}></Poster>
+                </Link>
+                <LikeBtn onClick={toggleLikeMovie} >{isLiked ? "❤️" : "🤍"}</LikeBtn>
+            </>}
         </Container>
     );
 };

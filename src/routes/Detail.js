@@ -58,7 +58,9 @@ const GET_MOVIE = gql`
 export default () => {
     const { id } = useParams();
     const { loading, data } = useQuery(GET_MOVIE, {
-        variables: { id: parseInt(id) }
+        variables: {
+            id: parseInt(id)
+        }
     });
     return (
         <Container>
