@@ -1,4 +1,4 @@
-import { gql, useMutation } from "@apollo/client";
+import { gql, useMutation, useQuery } from "@apollo/client";
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
@@ -23,6 +23,21 @@ const LikeBtn = styled.button`
     background-color: black;
     border: none;
     color: white;
+    cursor: pointer;
+`;
+
+const GET_MOVIE = gql`
+    query getMovie($id: Int!) {
+        movie(id: $id) {
+            id
+            title
+            medium_cover_image
+            language
+            rating
+            description_intro
+            isLiked @client
+        }
+    }
 `;
 
 const TOGGLE_LIKE_MOVIE = gql`
@@ -32,6 +47,9 @@ const TOGGLE_LIKE_MOVIE = gql`
 `;
 
 export default ({ id, bg, isLiked }) => {
+    const { loading, data } = useQuery(GET_MOVIE, {
+        variables: { id: parseInt(id) }
+    });
     const [toggleLikeMovie] = useMutation(
         TOGGLE_LIKE_MOVIE,
         { variables: { id: parseInt(id) } }
